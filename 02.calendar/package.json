@@ -5,12 +5,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
-    "dayjs": "^1.11.13",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.13.0",
-    "minimist": "^1.2.8",
     "prettier": "^3.4.2"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "minimist": "^1.2.8"
+  }
 }
