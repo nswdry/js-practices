@@ -8,13 +8,12 @@ const now = dayjs();
 const year = argv.y ? Number(argv.y) : now.year();
 const month = argv.m ? Number(argv.m) : now.month() + 1;
 
-const firstDay = dayjs(`${year}-${month}-01`);
-const lastDay = firstDay.endOf("month").date();
-const daysOfWeek = firstDay.day();
+const firstDate = dayjs(`${year}-${month}-01`);
+const lastDay = firstDate.endOf("month").date();
 
 console.log(`      ${month}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
-process.stdout.write("   ".repeat(daysOfWeek));
+process.stdout.write("   ".repeat(firstDate.day()));
 
 for (let i = 1; i <= lastDay; i++) {
   process.stdout.write(String(i).padStart(2, " ") + " ");
@@ -22,6 +21,3 @@ for (let i = 1; i <= lastDay; i++) {
     console.log();
   }
 }
-
-// zshの[%]表示をなくすため、強制的に改行
-console.log();
