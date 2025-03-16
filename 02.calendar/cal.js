@@ -2,6 +2,9 @@
 
 import dayjs from "dayjs";
 import minimist from "minimist";
+import ja from 'dayjs/locale/ja.js';
+
+dayjs.locale(ja);
 
 const argv = minimist(process.argv.slice(2));
 const now = dayjs();
