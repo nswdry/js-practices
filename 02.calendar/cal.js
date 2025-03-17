@@ -2,7 +2,7 @@
 
 import dayjs from "dayjs";
 import minimist from "minimist";
-import ja from 'dayjs/locale/ja.js';
+import ja from "dayjs/locale/ja.js";
 
 dayjs.locale(ja);
 
@@ -18,9 +18,19 @@ console.log(`      ${month}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 process.stdout.write("   ".repeat(firstDate.day()));
 
-for (let i = 1; i <= lastDate.date(); i++) {
-  process.stdout.write(String(i).padStart(2, " ") + " ");
-  if (dayjs(`${year}-${month}-${i}`).day() === 6) {
+for (
+  let date = firstDate;
+  date.isBefore(lastDate, "day") || date.isSame(lastDate, "day");
+  date = date.add(1, "day")
+) {
+  process.stdout.write(`${String(date.date()).padStart(2, " ")}`);
+  if (date.day() === 6) {
     console.log();
+  } else {
+    process.stdout.write(" ");
   }
+}
+//calコマンドと見た目を合わせるため、最終行で改行する
+if (lastDate.day() !== 6) {
+  console.log();
 }
