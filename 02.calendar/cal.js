@@ -2,9 +2,6 @@
 
 import dayjs from "dayjs";
 import minimist from "minimist";
-import ja from "dayjs/locale/ja.js";
-
-dayjs.locale(ja);
 
 const argv = minimist(process.argv.slice(2));
 const now = dayjs();
@@ -23,7 +20,7 @@ for (
   date.isBefore(lastDate, "day") || date.isSame(lastDate, "day");
   date = date.add(1, "day")
 ) {
-  process.stdout.write(`${String(date.date()).padStart(2, " ")}`);
+  process.stdout.write(String(date.date()).padStart(2, " "));
   if (date.day() === 6) {
     console.log();
   } else {
