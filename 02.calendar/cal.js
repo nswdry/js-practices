@@ -5,8 +5,20 @@ import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
 const now = dayjs();
-const year = argv.y >= 1970 && argv.y <= 2100 ? argv.y : now.year();
-const month = argv.m >= 1 && argv.m <= 12 ? argv.m : now.month() + 1;
+const year =
+  argv.y !== undefined &&
+  Number.isInteger(argv.y) &&
+  argv.y >= 1970 &&
+  argv.y <= 2100
+    ? argv.y
+    : now.year();
+const month =
+  argv.m !== undefined &&
+  Number.isInteger(argv.m) &&
+  argv.m >= 1 &&
+  argv.m <= 12
+    ? argv.m
+    : now.month() + 1;
 
 const firstDate = dayjs(`${year}-${month}-01`);
 const lastDate = firstDate.endOf("month");
@@ -29,5 +41,6 @@ for (
     }
   }
 }
+
 // calコマンドと見た目を合わせるため、最終行で改行する
 console.log();
