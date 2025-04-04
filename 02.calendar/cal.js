@@ -21,14 +21,9 @@ for (
   date = date.add(1, "day")
 ) {
   process.stdout.write(String(date.date()).padStart(2, " "));
-  if (!date.isSame(lastDate, "day")) {
-    if (date.day() === 6) {
-      console.log();
-    } else {
-      process.stdout.write(" ");
-    }
+  if (date.day() === 6 || date.isSame(lastDate, "day")) {
+    console.log();
+  } else {
+    process.stdout.write(" ");
   }
 }
-
-// calコマンドと見た目を合わせるため、最終行で改行する
-console.log();
