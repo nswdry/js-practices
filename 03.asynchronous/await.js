@@ -25,7 +25,7 @@ await run(db, createTableSql);
 try {
   await run(db, "INSERT INTO books (title) VALUES (?)", [null]);
 } catch (err) {
-  if (err.code === "SQLITE_CONSTRAINT") {
+  if (err?.code === "SQLITE_CONSTRAINT") {
     console.error(err.message);
   } else {
     throw err;
@@ -35,7 +35,7 @@ try {
 try {
   await get(db, "SELECT * FROM author");
 } catch (err) {
-  if (err.code === "SQLITE_ERROR") {
+  if (err?.code === "SQLITE_ERROR") {
     console.error(err.message);
   } else {
     throw err;
